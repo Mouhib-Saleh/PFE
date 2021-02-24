@@ -129,7 +129,7 @@ export default function Appbar() {
         { vl && <ActivityIndicator /> }
         
         </View>
-        
+        <View></View>
       <View>
       
    { addd &&  <Add name={id} mail={mail} password={pwd} />  }
