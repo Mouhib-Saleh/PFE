@@ -37,8 +37,8 @@ Dash:{
   screen: Dash,
   navigationOptions: {
     
-    title :'Drivers'
-   
+    title :'Drivers',
+    headerRight : props => <ActionBarIcon {...props} /> 
   }
 },
 }
