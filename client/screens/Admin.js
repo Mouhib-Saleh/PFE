@@ -50,8 +50,7 @@ export default function Admin({navigation}) {
     }
 
 
-  /* ggggfgfgfgfgfg
- */
+  /* gfgfgfgfgfgfggtthyjyjyjhyjyh */
 
     const classes = useStyles();
     return (
