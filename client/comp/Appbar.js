@@ -248,6 +248,7 @@ onChangeText={(val) => setpwd(val)}
 
 const styles = StyleSheet.create({
   b: {
+    marginTop:20,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
