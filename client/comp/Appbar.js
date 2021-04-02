@@ -160,7 +160,7 @@ placeholder='e.g HG45'
 onChangeText={(val) => setid(val)}
 />
 
-{/* ddfffdffdfdfdf */}
+
 </View>
 <View style={{ flexDirection: 'row'}}>
 <Text style={{marginTop:20, alignItems: 'center', textAlign:'center'}}>
