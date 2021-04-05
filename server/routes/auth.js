@@ -3,40 +3,23 @@ const User = require('../model/User');
 const bcrypt = require ('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-
-
-
 const cors = require('cors')
-
- 
 router.use(cors())
- 
-
+//list users
 router.get('/list',async (req,res) => {
-
-   
    
      const resultat = await User.find()
      
     return res.send(resultat);
     
-    
-    
     });
-
-
-
-
+// register user
 router.post('/register',async (req,res)=>{
 
  const mailexist = await User.findOne({mail: req.body.mail})
  if(mailexist) return res.status(200).send('mail exists !!');
-
-
 const salt = await bcrypt.genSalt(10);
 const hashPassword = await bcrypt.hash(req.body.password, salt);
-
-
 
  const user = new User({
      name: req.body.name,
@@ -51,8 +34,20 @@ res.send('user created');
     res.status(400).send(err);
 }
 
-
 });
+//get name 
+router.post('/data', async (req,res) => {
+
+    const user = await User.findOne({mail: req.body.mail})
+    
+ 
+   res.send(user);
+    
+
+    
+    });
+
+
 
 
 //login
@@ -76,10 +71,6 @@ res.header('auth-token',token).send(token); */
 
 
 });
-
-
-
-
 
 
 
