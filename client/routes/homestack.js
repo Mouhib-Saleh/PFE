@@ -3,6 +3,7 @@ import { createAppContainer} from 'react-navigation';
 import Home from '../screens/Home';
 import Dash from '../screens/Dash';
 import Admin from '../screens/Admin';
+import Profile from '../screens/Profile';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 function ActionBarIcon() {
@@ -14,7 +15,8 @@ function ActionBarIcon() {
 }
 const screens ={
  
-
+  
+    
 
   Home:{
     screen: Home,
@@ -38,6 +40,14 @@ Dash:{
   navigationOptions: {
     
     title :'Drivers',
+    headerRight : props => <ActionBarIcon {...props} /> 
+  }
+},
+Profile:{
+  screen: Profile,
+  navigationOptions: {
+    
+    title :'Profile',
     headerRight : props => <ActionBarIcon {...props} /> 
   }
 },

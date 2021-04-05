@@ -42,15 +42,19 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Admin({navigation}) {
-
+  const [id, setid] = useState();
+    
     const pressHandler = () =>{
 
         navigation.navigate('Dash') 
 
     }
+    const pressHandler2 = () =>{
 
+      navigation.navigate('Profile',{id:navigation.getParam('id')}) 
 
-  /* gfgfgfgfgfgfggtthyjyjyjhyjyh */
+  }
+
 
     const classes = useStyles();
     return (
@@ -107,6 +111,7 @@ export default function Admin({navigation}) {
         
         startIcon={<AccountBoxIcon/>}
         className={classes.button}
+        onClick={pressHandler2}
       >
         Profile
       </Button>
