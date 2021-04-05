@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../model/User');
+const Mission = require('../model/Mission');
 const bcrypt = require ('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -35,6 +36,37 @@ res.send('user created');
 }
 
 });
+
+
+// Add Mission
+router.post('/addMission',async (req,res)=>{
+    const mission = new Mission ({
+        missionId : req.body.id,
+        status: req.body.status,
+        contact : req.body.contact,
+        priority : req.body.priority,
+        comment : req.body.comment,
+       
+        
+    });
+   
+   try{
+   const savedMission = await mission.save();
+   res.send('mission created');
+   
+   }catch(err){
+       res.status(400).send(err);
+   }
+   
+   });
+
+
+
+
+
+
+
+
 //get name 
 router.post('/data', async (req,res) => {
 
