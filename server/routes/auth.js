@@ -88,6 +88,12 @@ router.post("/delete", async (req, res) => {
 
   res.send("deleted");
 });
+// delete Vehicule
+router.post("/deleteV", async (req, res) => {
+  const vehicule = await Vehicule.deleteOne({ matricule: req.body.matricule });
+
+  res.send("deleted");
+});
 
 //login
 router.post("/login", async (req, res) => {
@@ -101,7 +107,7 @@ router.post("/login", async (req, res) => {
   // login token
 
   /* const token = jwt.sign({id: user._id}, process.env.TOKEN_SECRET );
-res.header('auth-token',token).send(token); */
+   res.header('auth-token',token).send(token); */
 
   // delete user
 });
