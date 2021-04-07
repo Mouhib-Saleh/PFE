@@ -42,11 +42,13 @@ router.post("/register", async (req, res) => {
 // Add Mission
 router.post("/addMission", async (req, res) => {
   const mission = new Mission({
-    missionId: req.body.id,
+    missionId: req.body.missionId,
     status: req.body.status,
     contact: req.body.contact,
     priority: req.body.priority,
     comment: req.body.comment,
+    start_Date: req.body.start_Date,
+    end_Date: req.body.end_Date,
   });
 
   try {
@@ -80,6 +82,12 @@ router.post("/data", async (req, res) => {
   const user = await User.findOne({ mail: req.body.mail });
 
   res.send(user);
+});
+//get Missions
+router.post("/filterMissions", async (req, res) => {
+  const mission = await Mission.find({ status: req.body.status });
+
+  return res.send(mission);
 });
 
 // delete user
