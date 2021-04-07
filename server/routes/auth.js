@@ -88,6 +88,12 @@ router.post("/delete", async (req, res) => {
 
   res.send("deleted");
 });
+// delete Vehicule
+router.post("/deleteV", async (req, res) => {
+  const vehicule = await Vehicule.deleteOne({ matricule: req.body.matricule });
+
+  res.send("deleted");
+});
 
 //login
 router.post("/login", async (req, res) => {
