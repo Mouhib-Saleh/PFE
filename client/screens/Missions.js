@@ -2,12 +2,10 @@ import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput } from "react-native";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import DnsIcon from "@material-ui/icons/Dns";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
-import CommuteIcon from "@material-ui/icons/Commute";
-import GroupIcon from "@material-ui/icons/Group";
-
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import HourglassEmptyIcon from "@material-ui/icons/HourglassEmpty";
+import CancelScheduleSendIcon from "@material-ui/icons/CancelScheduleSend";
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
@@ -24,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 40,
     marginRight: 40,
     marginBottom: 15,
-    marginTop: 70,
+    marginTop: 90,
     alignItems: theme.center,
   },
   appBar: {
@@ -33,69 +31,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Admin({ navigation }) {
-  const pressHandler = () => {
-    navigation.navigate("Dash");
+export default function Missions({ navigation }) {
+  const pressA = () => {
+    navigation.navigate("MissionsTp", { type: "Aborted" });
   };
-  const pressHandler2 = () => {
-    navigation.navigate("Profile", { id: navigation.getParam("id") });
+  const pressF = () => {
+    navigation.navigate("MissionsTp", { type: "Finished" });
   };
-  const pressV = () => {
-    navigation.navigate("Vehicule");
-  };
-  const pressV2 = () => {
-    navigation.navigate("Missions");
+  const pressP = () => {
+    navigation.navigate("MissionsTp", { type: "Pending" });
   };
 
   const classes = useStyles();
   return (
     <View>
-      <Text style={styles.b}>Services </Text>
-
+      <Text style={styles.b}>category</Text>²
       <Button
-        variant="contained"
+        variant="outlined"
         color="primary"
-        startIcon={<DnsIcon />}
-        onClick={pressV2}
+        startIcon={<CheckCircleOutlineIcon />}
         className={classes.butto}
+        onClick={pressF}
       >
-        Missions
+        Finished
       </Button>
       <Button
-        variant="contained"
-        color="primary"
-        startIcon={<AddCircleOutlineIcon />}
-        className={classes.button}
-      >
-        Add New
-      </Button>
-
-      <Button
-        variant="contained"
+        variant="outlined"
         color="default"
-        startIcon={<CommuteIcon />}
+        startIcon={<HourglassEmptyIcon />}
         className={classes.button}
-        onClick={pressV}
+        onClick={pressP}
       >
-        vehicules
+        Pending
       </Button>
       <Button
-        variant="contained"
-        color="default"
-        startIcon={<GroupIcon />}
-        className={classes.button}
-        onClick={pressHandler}
-      >
-        Drivers
-      </Button>
-      <Button
-        variant="contained"
+        variant="outlined"
         color="secondary"
-        startIcon={<AccountBoxIcon />}
+        startIcon={<CancelScheduleSendIcon />}
         className={classes.button}
-        onClick={pressHandler2}
+        onClick={pressA}
       >
-        Profile
+        Aborted
       </Button>
       <View position="fixed" style={styles.headerFooterStyle}>
         <Text style={styles.textStyle}> Copyright© NGI 2021</Text>
@@ -116,6 +92,7 @@ const styles = StyleSheet.create({
   },
   headerFooterStyle: {
     width: "100%",
+    marginTop: 80,
 
     bottom: 0,
   },

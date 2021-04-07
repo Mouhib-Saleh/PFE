@@ -5,6 +5,8 @@ import Dash from "../screens/Dash";
 import Admin from "../screens/Admin";
 import Profile from "../screens/Profile";
 import Vehicule from "../screens/Vehicule";
+import Missions from "../screens/Missions";
+import MissionsTp from "../screens/MissionsTp";
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 function ActionBarIcon() {
@@ -16,6 +18,13 @@ function ActionBarIcon() {
   );
 }
 const screens = {
+  Missions: {
+    screen: Missions,
+    navigationOptions: {
+      title: "Missions",
+      headerRight: (props) => <ActionBarIcon {...props} />,
+    },
+  },
   Home: {
     screen: Home,
     navigationOptions: {
@@ -48,6 +57,13 @@ const screens = {
     screen: Vehicule,
     navigationOptions: {
       title: "Vehicule",
+      headerRight: (props) => <ActionBarIcon {...props} />,
+    },
+  },
+  MissionsTp: {
+    screen: MissionsTp,
+    navigationOptions: {
+      title: "category",
       headerRight: (props) => <ActionBarIcon {...props} />,
     },
   },
