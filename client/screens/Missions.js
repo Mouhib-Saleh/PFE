@@ -45,7 +45,7 @@ export default function Missions({ navigation }) {
   const classes = useStyles();
   return (
     <View>
-      <Text style={styles.b}>category</Text>²
+      <Text style={styles.b}>category</Text>
       <Button
         variant="outlined"
         color="primary"

@@ -20,8 +20,6 @@ import {
 } from "react-native";
 import Modal from "modal-enhanced-react-native-web";
 import { Card, Button } from "react-native-elements";
-import { FAB } from "react-native-paper";
-
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreIcon from "@material-ui/icons/More";
 
@@ -62,134 +60,29 @@ export default function Vehicule({ navigation }) {
   const [dataSource, setData] = useState("");
   const [res, setRes] = useState("");
   const [visible, setvisible] = useState(false);
-  const [id, setid] = useState();
-  const [pwd, setpwd] = useState();
-  const [mail, setmail] = useState();
   const [mat, setmat] = useState();
   const [brand, setbrand] = useState();
   const [year, setyear] = useState();
   const [add, setadd] = useState();
   const [loading, setloading] = useState(true);
   const [loading2, setloading2] = useState(false);
-
-  const pressbutton = () => {
-    setvisible(true);
-  };
-
-  const pressclose = () => {
-    setvisible(false);
-  };
-
-  const pressadd = () => {
-    return axios
-      .post("http://localhost:3000/api/user/addVehicule", {
-        matricule: mat,
-        brand: brand,
-        year: year,
-      })
-      .then((res) => {
-        setadd(res.data);
-        setloading2(true);
-      });
-  };
+  const hid = navigation.getParam("type");
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/user/listV")
-      .then((res) => setData(res.data));
-    setloading(false);
-    if (loading2) {
-      alert(add);
-      setloading2(false);
-    }
+      .post("http://localhost:3000/api/user/filterMissions", {
+        status: hid,
+      })
+      .then((res) => {
+        setData(res.data);
+        setloading(false);
+      });
   });
 
   return (
     <React.Fragment>
       <View style={styles.b}>
-        <Modal isVisible={visible} onBackdropPress={() => setvisible(false)}>
-          <View style={{ flex: 1, justifyContent: "center" }}>
-            <Card>
-              <Card.Title>Add Vehicule</Card.Title>
-              <Card.Divider />
-              <View style={{ flexDirection: "row" }}>
-                <Text
-                  style={{
-                    marginTop: 20,
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  Vehicule
-                </Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="e.g 51Tunis2020"
-                  onChangeText={(visible) => setmat(visible)}
-                />
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <Text
-                  style={{
-                    marginTop: 20,
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  year
-                </Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="2017"
-                  onChangeText={(visible) => setyear(visible)}
-                />
-              </View>
-              <View style={{ flexDirection: "row" }}>
-                <Text
-                  style={{
-                    marginTop: 20,
-                    alignItems: "center",
-                    textAlign: "center",
-                  }}
-                >
-                  Brand
-                </Text>
-                <TextInput
-                  style={styles.input}
-                  placeholder="volkswagen"
-                  onChangeText={(visible) => setbrand(visible)}
-                />
-              </View>
-
-              <Button
-                buttonStyle={{
-                  borderRadius: 0,
-                  marginLeft: 0,
-                  marginRight: 0,
-                  marginBottom: 0,
-                  marginTop: 20,
-                }}
-                title="Add"
-                onPress={pressadd}
-              />
-            </Card>
-
-            <Button
-              buttonStyle={{
-                borderRadius: 0,
-                width: 50,
-                marginLeft: 20,
-                marginBottom: 0,
-                marginTop: 20,
-                backgroundColor: "none",
-              }}
-              title="close"
-              onPress={pressclose}
-            />
-          </View>
-        </Modal>
         <Text style={styles.b}>{navigation.getParam("type")} Missions </Text>
-
         {loading && <ActivityIndicator />}
       </View>
 
@@ -203,8 +96,8 @@ export default function Vehicule({ navigation }) {
               <View style={{ flexDirection: "row" }}>
                 <ListItemText
                   className={classes.list}
-                  primary={item.matricule}
-                  secondary={item.brand}
+                  primary={item.start_Date}
+                  secondary={item.end_Date}
                 />
                 <IconButton color="primary" className={classes.root}>
                   <MoreIcon />
@@ -217,7 +110,7 @@ export default function Vehicule({ navigation }) {
                       })
                       .then((res) => {
                         setRes(res.data);
-                        alert("Vehicule Deleted");
+                        alert("Mission Deleted");
                       })
                   }
                   color="secondary"
