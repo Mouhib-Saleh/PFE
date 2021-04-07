@@ -123,8 +123,8 @@ export default function Appbar() {
 
   return (
     <React.Fragment>
-     <View style={styles.b}><Text  style={styles.b} >Welcome </Text>
-        <Text >Users Data</Text>
+     <View style={styles.b}><Text  style={styles.b} >Enlisted drivers </Text>
+        
         
         { vl && <ActivityIndicator /> }
         
@@ -160,7 +160,7 @@ placeholder='e.g HG45'
 onChangeText={(val) => setid(val)}
 />
 
-{/* ddfffdffdfdfdf */}
+
 </View>
 <View style={{ flexDirection: 'row'}}>
 <Text style={{marginTop:20, alignItems: 'center', textAlign:'center'}}>
@@ -229,9 +229,7 @@ onChangeText={(val) => setpwd(val)}
       </Paper>
       <AppBar position="sticky" color="primary" className={classes.appBar}>
         <Toolbar>
-          <IconButton edge="start" color="inherit" aria-label="open drawer">
-            <MenuIcon />
-          </IconButton>
+         
           <FAB    style={styles.fab} icon="plus" onPress={pressH} >
           
           </FAB>
@@ -240,9 +238,7 @@ onChangeText={(val) => setpwd(val)}
           <IconButton color="inherit">
             <SearchIcon />
           </IconButton>
-          <IconButton edge="end" color="inherit">
-            <MoreIcon />
-          </IconButton>
+         
         </Toolbar>
       </AppBar>
     </React.Fragment>
@@ -252,13 +248,14 @@ onChangeText={(val) => setpwd(val)}
 
 const styles = StyleSheet.create({
   b: {
+    marginTop:20,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
    
     fontWeight: "bold" ,
-    fontSize:30
+    fontSize:25
    
   },
   c :{

@@ -1,10 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
-import { Card, ListItem, Button } from 'react-native-elements';
+import { Card, Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { AwesomeTextInput } from 'react-native-awesome-text-input';
-import Login from '../comp/Login';
+import axios from 'axios';
 const width_proportion = '60%';
 const height_proportion = '20%';
 
@@ -12,14 +11,41 @@ const height_proportion = '20%';
 
 
 export default function App({navigation}) {
-  const pressHandler = () =>{
-    setlogin(true);
-    /* navigation.navigate('Dash',{id:id}); */
-  }
 
   const [id, setid] = useState();
   const [pwd, setpwd] = useState();
-  const [login, setlogin] = useState(false);
+  const [dataSource, setData] = useState();
+
+
+
+  const pressHandler = () =>{
+    
+    axios.post('http://localhost:3000/api/user/login',{
+      mail: id,
+      password: pwd,
+      }).then(res => {
+        setData(res.data)
+      })
+      if (dataSource == 'invalid password') {
+        alert('invalid password')
+        
+        }
+       else{
+          if (dataSource == 'mail doesnt exist') {
+              alert('mail doesnt exist')
+             
+              }
+          
+              else{
+                  if (dataSource == 'Connected') {
+                       navigation.navigate('Admin',{id:id}) 
+                     
+                      }
+                }
+        }
+  }
+
+  
     return (  <View style={styles.container}>
      
      
@@ -66,11 +92,6 @@ onChangeText={(val) => setpwd(val)}
       title='Login'  onPress={pressHandler}/>
   
 </Card>
-<View >
-   { login &&  <Login  mail={id} password={pwd} id={id} navigation={navigation} />  }
-  
-     
-</View>
 
 
 
