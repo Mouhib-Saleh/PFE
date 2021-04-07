@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-
+    marginBottom: 10,
     fontWeight: "bold",
     fontSize: 25,
   },

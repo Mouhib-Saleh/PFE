@@ -248,6 +248,7 @@ export default function Vehicule({ navigation }) {
 const styles = StyleSheet.create({
   b: {
     marginTop: 20,
+    marginBottom: 10,
     flex: 1,
     justifyContent: "center",
     alignItems: "center",

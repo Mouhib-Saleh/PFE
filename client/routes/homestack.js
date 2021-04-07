@@ -16,13 +16,6 @@ function ActionBarIcon() {
   );
 }
 const screens = {
-  Vehicule: {
-    screen: Vehicule,
-    navigationOptions: {
-      title: "Vehicule",
-      headerRight: (props) => <ActionBarIcon {...props} />,
-    },
-  },
   Home: {
     screen: Home,
     navigationOptions: {
@@ -48,6 +41,13 @@ const screens = {
     screen: Dash,
     navigationOptions: {
       title: "Drivers",
+      headerRight: (props) => <ActionBarIcon {...props} />,
+    },
+  },
+  Vehicule: {
+    screen: Vehicule,
+    navigationOptions: {
+      title: "Vehicule",
       headerRight: (props) => <ActionBarIcon {...props} />,
     },
   },
