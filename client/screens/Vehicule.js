@@ -64,6 +64,9 @@ export default function Vehicule({ navigation }) {
   const [id, setid] = useState();
   const [pwd, setpwd] = useState();
   const [mail, setmail] = useState();
+  const [mat, setmat] = useState();
+  const [brand, setbrand] = useState();
+  const [year, setyear] = useState();
   const [add, setadd] = useState();
   const [loading, setloading] = useState(true);
   const [loading2, setloading2] = useState(false);
@@ -78,10 +81,10 @@ export default function Vehicule({ navigation }) {
 
   const pressadd = () => {
     return axios
-      .post("http://localhost:3000/api/user/register", {
-        name: id,
-        password: pwd,
-        mail: mail,
+      .post("http://localhost:3000/api/user/addVehicule", {
+        matricule: mat,
+        brand: brand,
+        year: year,
       })
       .then((res) => {
         setadd(res.data);
@@ -91,7 +94,7 @@ export default function Vehicule({ navigation }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/User/list")
+      .get("http://localhost:3000/api/user/listV")
       .then((res) => setData(res.data));
     setloading(false);
     if (loading2) {
@@ -120,8 +123,8 @@ export default function Vehicule({ navigation }) {
                 </Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="e.g HG45"
-                  onChangeText={(visible) => setid(visible)}
+                  placeholder="e.g 51Tunis2020"
+                  onChangeText={(visible) => setmat(visible)}
                 />
               </View>
               <View style={{ flexDirection: "row" }}>
@@ -132,12 +135,12 @@ export default function Vehicule({ navigation }) {
                     textAlign: "center",
                   }}
                 >
-                  Mail
+                  year
                 </Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="xyz@gmail.com"
-                  onChangeText={(visible) => setmail(visible)}
+                  placeholder="2017"
+                  onChangeText={(visible) => setyear(visible)}
                 />
               </View>
               <View style={{ flexDirection: "row" }}>
@@ -148,12 +151,12 @@ export default function Vehicule({ navigation }) {
                     textAlign: "center",
                   }}
                 >
-                  Pass
+                  Brand
                 </Text>
                 <TextInput
                   style={styles.input}
-                  placeholder="*****"
-                  onChangeText={(visible) => setpwd(visible)}
+                  placeholder="volkswagen"
+                  onChangeText={(visible) => setbrand(visible)}
                 />
               </View>
 
@@ -199,8 +202,8 @@ export default function Vehicule({ navigation }) {
               <View style={{ flexDirection: "row" }}>
                 <ListItemText
                   className={classes.list}
-                  primary={item.name}
-                  secondary={item.mail}
+                  primary={item.matricule}
+                  secondary={item.brand}
                 />
                 <IconButton
                   onClick={() =>
@@ -210,7 +213,7 @@ export default function Vehicule({ navigation }) {
                       })
                       .then((res) => {
                         setRes(res.data);
-                        alert("User Deleted");
+                        alert("Vehicule Deleted");
                       })
                   }
                   color="secondary"
