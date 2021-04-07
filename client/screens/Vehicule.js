@@ -23,6 +23,7 @@ import { Card, Button } from "react-native-elements";
 import { FAB } from "react-native-paper";
 
 import DeleteIcon from "@material-ui/icons/Delete";
+import MoreIcon from "@material-ui/icons/More";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -205,11 +206,14 @@ export default function Vehicule({ navigation }) {
                   primary={item.matricule}
                   secondary={item.brand}
                 />
+                <IconButton color="primary" className={classes.root}>
+                  <MoreIcon />
+                </IconButton>
                 <IconButton
                   onClick={() =>
                     axios
-                      .post("http://localhost:3000/api/User/delete", {
-                        mail: item.mail,
+                      .post("http://localhost:3000/api/user/deleteV", {
+                        matricule: item.matricule,
                       })
                       .then((res) => {
                         setRes(res.data);
@@ -222,7 +226,6 @@ export default function Vehicule({ navigation }) {
                 >
                   <DeleteIcon />
                 </IconButton>
-                <div></div>
               </View>
             )}
           />
