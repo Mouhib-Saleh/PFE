@@ -14,21 +14,5 @@ export default function Dash({navigation}) {
       
  
   );
-}
+};
 
-const styles = StyleSheet.create({
-  b: {
-   
-    
-    backgroundColor: '#fff',
-   
-    fontWeight: "bold" ,
-    fontSize:30
-   
-  },
- 
-
-
-
-
-});

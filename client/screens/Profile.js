@@ -73,18 +73,6 @@ export default function Profile({navigation}) {
     
       },)
    
-
-
-
-
-    const pressHandler = () =>{
-
-        navigation.navigate('Dash') 
-
-    }
-   
-
-
     const classes = useStyles();
     return (
    

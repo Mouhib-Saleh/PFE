@@ -4,6 +4,7 @@ import Home from '../screens/Home';
 import Dash from '../screens/Dash';
 import Admin from '../screens/Admin';
 import Profile from '../screens/Profile';
+import Vehicule from '../screens/Vehicule';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import React from 'react';
 function ActionBarIcon() {
@@ -48,6 +49,14 @@ Profile:{
   navigationOptions: {
     
     title :'Profile',
+    headerRight : props => <ActionBarIcon {...props} /> 
+  }
+},
+Vehicule:{
+  screen: Vehicule,
+  navigationOptions: {
+    
+    title :'Vehicule',
     headerRight : props => <ActionBarIcon {...props} /> 
   }
 },

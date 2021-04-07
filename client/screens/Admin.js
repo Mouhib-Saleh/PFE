@@ -2,18 +2,12 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, TextInput} from 'react-native';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
-import Icon from '@material-ui/core/Icon';
-import SaveIcon from '@material-ui/icons/Save';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import DnsIcon from '@material-ui/icons/Dns';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import CommuteIcon from '@material-ui/icons/Commute';
 import GroupIcon from '@material-ui/icons/Group';
-import CopyrightIcon from '@material-ui/icons/Copyright';
-import { GpsFixed } from '@material-ui/icons';
+
 const useStyles = makeStyles((theme) => ({
     button: {
       margin: theme.spacing(1),
@@ -42,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function Admin({navigation}) {
-  const [id, setid] = useState();
+  
     
     const pressHandler = () =>{
 
@@ -54,6 +48,11 @@ export default function Admin({navigation}) {
       navigation.navigate('Profile',{id:navigation.getParam('id')}) 
 
   }
+  const pressV = () =>{
+
+    navigation.navigate('Vehicule') 
+
+}
 
 
     const classes = useStyles();
@@ -88,6 +87,7 @@ export default function Admin({navigation}) {
        
         startIcon={<CommuteIcon/>}
         className={classes.button}
+        onClick={pressV}
       >
         vehicules
       </Button>
