@@ -102,6 +102,12 @@ router.post("/deleteV", async (req, res) => {
 
   res.send("deleted");
 });
+// delete Mission
+router.post("/deleteM", async (req, res) => {
+  const mission = await Mission.deleteOne({ _id: req.body._id });
+
+  res.send("deleted");
+});
 
 //login
 router.post("/login", async (req, res) => {
