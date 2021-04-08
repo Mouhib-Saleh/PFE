@@ -46,6 +46,9 @@ export default function Admin({ navigation }) {
   const pressV2 = () => {
     navigation.navigate("Missions");
   };
+  const pressN = () => {
+    navigation.navigate("Addm");
+  };
 
   const classes = useStyles();
   return (
@@ -66,6 +69,7 @@ export default function Admin({ navigation }) {
         color="primary"
         startIcon={<AddCircleOutlineIcon />}
         className={classes.button}
+        onClick={pressN}
       >
         Add New
       </Button>
