@@ -18,13 +18,6 @@ function ActionBarIcon() {
   );
 }
 const screens = {
-  Missions: {
-    screen: Missions,
-    navigationOptions: {
-      title: "Missions",
-      headerRight: (props) => <ActionBarIcon {...props} />,
-    },
-  },
   Home: {
     screen: Home,
     navigationOptions: {
@@ -64,6 +57,13 @@ const screens = {
     screen: MissionsTp,
     navigationOptions: {
       title: "category",
+      headerRight: (props) => <ActionBarIcon {...props} />,
+    },
+  },
+  Missions: {
+    screen: Missions,
+    navigationOptions: {
+      title: "Missions",
       headerRight: (props) => <ActionBarIcon {...props} />,
     },
   },

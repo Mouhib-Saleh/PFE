@@ -105,8 +105,8 @@ export default function Vehicule({ navigation }) {
                 <IconButton
                   onClick={() =>
                     axios
-                      .post("http://localhost:3000/api/user/deleteV", {
-                        matricule: item.matricule,
+                      .post("http://localhost:3000/api/user/deleteM", {
+                        _id: item._id,
                       })
                       .then((res) => {
                         setRes(res.data);
