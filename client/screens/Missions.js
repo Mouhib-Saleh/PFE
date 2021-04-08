@@ -100,8 +100,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#0f0f0f",
     fontSize: 12,
-    marginTop: 15,
-    padding: 115,
+    marginTop: 140,
   },
   b: {
     justifyContent: "center",
