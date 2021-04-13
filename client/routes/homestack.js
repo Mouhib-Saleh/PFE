@@ -9,6 +9,7 @@ import Missions from "../screens/Missions";
 import User from "../screens/User";
 import Addm from "../screens/Addm";
 import MissionsTp from "../screens/MissionsTp";
+
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 function ActionBarIcon() {
@@ -55,6 +56,13 @@ const screens = {
       headerRight: (props) => <ActionBarIcon {...props} />,
     },
   },
+  User: {
+    screen: User,
+    navigationOptions: {
+      title: "Driver",
+      headerRight: (props) => <ActionBarIcon {...props} />,
+    },
+  },
   MissionsTp: {
     screen: MissionsTp,
     navigationOptions: {
@@ -62,6 +70,7 @@ const screens = {
       headerRight: (props) => <ActionBarIcon {...props} />,
     },
   },
+
   Missions: {
     screen: Missions,
     navigationOptions: {
@@ -76,13 +85,7 @@ const screens = {
       headerRight: (props) => <ActionBarIcon {...props} />,
     },
   },
-  User: {
-    screen: User,
-    navigationOptions: {
-      title: "Driver",
-      headerRight: (props) => <ActionBarIcon {...props} />,
-    },
-  },
+
   Addm: {
     screen: Addm,
     navigationOptions: {

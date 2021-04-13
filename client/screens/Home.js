@@ -34,7 +34,10 @@ export default function App({ navigation }) {
         navigation.navigate("Admin", { id: id });
       } else if (dataSource.role == "User") {
         setloading(false);
-        navigation.navigate("User", { id: dataSource.name });
+        navigation.navigate("User", {
+          id: dataSource._id,
+          name: dataSource.name,
+        });
       }
     }
   });
