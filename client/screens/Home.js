@@ -23,12 +23,18 @@ export default function App({ navigation }) {
       });
 
     if (loading) {
-      if (dataSource != "Connected") {
+      if (dataSource == "mail doesnt exist") {
         alert(dataSource);
         setloading(false);
-      } else {
+      } else if (dataSource == "invalid password") {
+        alert(dataSource);
+        setloading(false);
+      } else if (dataSource.role == "Admin") {
         setloading(false);
         navigation.navigate("Admin", { id: id });
+      } else if (dataSource.role == "User") {
+        setloading(false);
+        navigation.navigate("User", { id: dataSource.name });
       }
     }
   });

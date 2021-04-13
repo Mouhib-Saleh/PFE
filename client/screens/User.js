@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   root: {},
 }));
 
-export default function Vehicule({ navigation }) {
+export default function User({ navigation }) {
   const classes = useStyles();
   const [dataSource, setData] = useState("");
   const [res, setRes] = useState("");
@@ -68,7 +68,7 @@ export default function Vehicule({ navigation }) {
   const [loading2, setloading2] = useState(false);
   const hid = navigation.getParam("type");
 
-  useEffect(() => {
+  /* useEffect(() => {
     axios
       .post("http://localhost:3000/api/user/filterMissions", {
         status: hid,
@@ -77,12 +77,12 @@ export default function Vehicule({ navigation }) {
         setData(res.data);
         setloading(false);
       });
-  });
+  }); */
 
   return (
     <React.Fragment>
       <View style={styles.b}>
-        <Text style={styles.b}>{navigation.getParam("type")} Missions </Text>
+        <Text style={styles.b}>Welcome {navigation.getParam("id")} </Text>
         {loading && <ActivityIndicator />}
       </View>
 
@@ -103,7 +103,7 @@ export default function Vehicule({ navigation }) {
                   <MoreIcon />
                 </IconButton>
                 <IconButton
-                  onClick={() =>
+                  /* onClick={() =>
                     axios
                       .post("http://localhost:3000/api/user/deleteM", {
                         _id: item._id,
@@ -112,7 +112,7 @@ export default function Vehicule({ navigation }) {
                         setRes(res.data);
                         alert("Mission Deleted");
                       })
-                  }
+                  } */
                   color="secondary"
                   className={classes.root}
                   aria-label="delete"

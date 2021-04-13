@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
   root: {},
 }));
 
-export default function Vehicule({ navigation }) {
+export default function Addm({ navigation }) {
   const classes = useStyles();
   const [dataSource, setData] = useState("");
   const [res, setRes] = useState("");
