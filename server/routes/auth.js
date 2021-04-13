@@ -30,6 +30,7 @@ router.post("/register", async (req, res) => {
     name: req.body.name,
     password: hashPassword,
     mail: req.body.mail,
+    role: req.body.role,
   });
   try {
     const savedUser = await user.save();
@@ -49,6 +50,8 @@ router.post("/addMission", async (req, res) => {
     comment: req.body.comment,
     start_Date: req.body.start_Date,
     end_Date: req.body.end_Date,
+    "start_adress.coordinates": req.body.start_adress,
+    "end_adress.coordinates": req.body.end_adress,
   });
 
   try {
@@ -116,7 +119,7 @@ router.post("/login", async (req, res) => {
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.send("invalid password");
-  if (validPass) return res.send("Connected");
+  if (validPass) return res.send(user);
 
   // login token
 
