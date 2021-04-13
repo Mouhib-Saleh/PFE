@@ -13,9 +13,6 @@ import EventIcon from "@material-ui/icons/Event";
 import MapIcon from "@material-ui/icons/Map";
 import LocalShippingIcon from "@material-ui/icons/LocalShipping";
 import BlockIcon from "@material-ui/icons/Block";
-import Us from "../comp/Us";
-import Missionmap from "../comp/Missionmap";
-import Vehicule from "../comp/Vehicule";
 import {
   StyleSheet,
   Text,
@@ -66,61 +63,37 @@ const useStyles = makeStyles((theme) => ({
   root: {},
 }));
 
-export default function User({ navigation }) {
-  const pressM = () => {
-    seta(false);
-    seta2(true);
-    seta3(false);
-  };
-  const pressM2 = () => {
-    seta(false);
-    seta2(false);
-    seta3(true);
-  };
-  const pressM3 = () => {
-    seta(true);
-    seta2(false);
-    seta3(false);
-  };
-  const [a, seta] = useState(true);
-  const [a2, seta2] = useState(false);
-  const [a3, seta3] = useState(false);
+export default function Missionmap({ navigation }) {
   const classes = useStyles();
-  const hid = navigation.getParam("name");
-  const hid2 = navigation.getParam("id");
-  return (
-    <View>
-      {a && <Us name={hid} uid={hid2} />}
-      {a2 && <Missionmap />}
-      {a3 && <Vehicule />}
-      <React.Fragment>
-        <AppBar position="fixed" color="primary" className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              onClick={pressM}
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-            >
-              <MapIcon />
-            </IconButton>
-            <Fab
-              onClick={pressM3}
-              color="secondary"
-              aria-label="add"
-              className={classes.fabButton}
-            >
-              <EventIcon />
-            </Fab>
-            <div className={classes.grow} />
+  const [dataSource, setData] = useState("");
+  const [res, setRes] = useState("");
+  const [visible, setvisible] = useState(false);
+  const [mat, setmat] = useState();
+  const [brand, setbrand] = useState();
+  const [year, setyear] = useState();
+  const [add, setadd] = useState();
+  const [loading, setloading] = useState(true);
+  const [loading2, setloading2] = useState(false);
 
-            <IconButton onClick={pressM2} edge="end" color="inherit">
-              <LocalShippingIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-      </React.Fragment>
-    </View>
+  /*  useEffect(() => {
+    axios
+      .post("http://localhost:3000/api/user/filterMissions", {
+        status: "Pending",
+      })
+      .then((res) => {
+        setData(res.data);
+        setloading(false);
+      });
+  }); */
+
+  return (
+    <React.Fragment>
+      <View style={styles.b}>
+        <Text style={styles.txt}>Trajectory </Text>
+
+        {loading && <ActivityIndicator />}
+      </View>
+    </React.Fragment>
   );
 }
 
@@ -131,7 +104,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
   },
   txt: {
     fontWeight: "bold",
