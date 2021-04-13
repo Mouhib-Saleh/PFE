@@ -1,17 +1,22 @@
 const mongoose = require("mongoose");
+Schema = mongoose.Schema;
+ObjectId = Schema.ObjectId;
 const missionSchema = new mongoose.Schema({
   missionId: {
-    type: String,
+    type: ObjectId,
   },
+  vehicule_id: { type: ObjectId, ref: "Vehicule" },
+  user_id: {},
   status: {
     type: String,
     required: true,
-    min: 2,
+    default: "Pending",
+    // min: 2,
   },
   contact: {
     type: String,
     required: true,
-    min: 2,
+    // min: 2,
   },
   priority: {
     type: Number,
@@ -29,67 +34,27 @@ const missionSchema = new mongoose.Schema({
   start_Date: {
     type: Date,
     required: false,
-    default: mongoose.now,
+    default: Date.now,
   },
-  start_Date_time: {
-    start_time: {
-      type: Date,
 
-      default: mongoose.now,
-    },
-    end_time: {
-      type: Date,
-
-      default: mongoose.now,
-    },
-  },
   end_Date: {
     type: Date,
 
     default: mongoose.now,
   },
-  end_Date_time: {
-    start_time: {
-      type: Date,
 
-      default: mongoose.now,
-    },
-    end_time: {
-      type: Date,
-
-      default: mongoose.now,
-    },
-  },
   start_adress: {
-    type: "string",
-
-    enum: {
-      // here !
-    },
-    coordinates: {
-      N: {
-        type: Number,
-      },
-      E: {
-        type: Number,
-      },
-    },
+    type: { type: "string", enum: ["Point,LineString", "Polygon"] },
+    coordinates: [],
   },
   end_adress: {
-    type: String,
-    required: false,
-    enum: {
-      // here !
-    },
-    coordinates: {
-      N: {
-        type: Number,
-      },
-      E: {
-        type: Number,
-      },
-    },
+    type: { type: "string", enum: ["Point,LineString", "Polygon"] },
+    coordinates: [],
   },
+
+  created_by: {},
+  created_date: {},
+  modif_date: {},
 });
 
 module.exports = mongoose.model("mission", missionSchema);
