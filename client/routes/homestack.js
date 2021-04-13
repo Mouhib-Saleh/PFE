@@ -6,6 +6,7 @@ import Admin from "../screens/Admin";
 import Profile from "../screens/Profile";
 import Vehicule from "../screens/Vehicule";
 import Missions from "../screens/Missions";
+import User from "../screens/User";
 import Addm from "../screens/Addm";
 import MissionsTp from "../screens/MissionsTp";
 import { StyleSheet, Text, View, Image } from "react-native";
@@ -72,6 +73,13 @@ const screens = {
     screen: Admin,
     navigationOptions: {
       title: "Admin",
+      headerRight: (props) => <ActionBarIcon {...props} />,
+    },
+  },
+  User: {
+    screen: User,
+    navigationOptions: {
+      title: "Driver",
       headerRight: (props) => <ActionBarIcon {...props} />,
     },
   },
